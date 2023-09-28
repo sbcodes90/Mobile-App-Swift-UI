@@ -8,6 +8,13 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @State var playerCard = "card7"
+    @State var cpuCard = "card12"
+
+       var playerScore = 0
+       var cpuScore = 0
+    
     var body: some View {
         ZStack {//allows you to place items on top of each other
                     Image("background-plain")
@@ -19,13 +26,17 @@ struct ContentView: View {
                         Spacer()
                         HStack {
                             Spacer()
-                            Image("card7")
+                            Image(playerCard)
                             Spacer()
-                            Image("card12")
+                            Image(cpuCard)
                             Spacer()
                         }
                         Spacer()
+                        Button {
+                            deal()
+                        } label: {
                             Image("button")
+                        }
                         Spacer()
                         HStack {
                             Spacer()
@@ -51,6 +62,15 @@ struct ContentView: View {
                     }
                 }
             }
+    func deal() {
+        print("dealing cards")
+        //randomize the players card
+        playerCard = "card" + String(Int.random(in: 2...14))
+        //randomize cpu card
+        cpuCard = "card" + String(Int.random(in: 2...14))
+        //update the score
+        
+    }
         }
      
 //below is just for preview purposes does not get compiled
